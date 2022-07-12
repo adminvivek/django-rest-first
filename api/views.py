@@ -108,7 +108,7 @@ def patch_todo(request):
 class TodoView(APIView):
 
     # authentication_classes = [SessionAuthentication, BasicAuthentication]
-    authentication_classes = [TokenAuthentication]
+    authentication_classes = [SessionAuthentication,TokenAuthentication]
     permission_classes = [IsAuthenticated]
     # @method_decorator(cache_page(60*60*2))
     def get(self, request):
