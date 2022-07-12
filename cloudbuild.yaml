@@ -1,22 +1,22 @@
 steps:
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/sneha-creations/restapi:$COMMIT_SHA', '.']
+  args: ['build', '-t', 'gcr.io/sneha-creations/firstapi:$COMMIT_SHA', '.']
 # Push the image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/sneha-creations/restapi:$COMMIT_SHA']
+  args: ['push', 'gcr.io/sneha-creations/firstapi:$COMMIT_SHA']
 # Deploy image to Cloud Run
 - name: 'gcr.io/cloud-builders/gcloud'
   args:
   - 'run'
   - 'deploy'
-  - 'restapi'
+  - 'firstapi'
   - '--image'
-  - 'gcr.io/sneha-creations/restapi:$COMMIT_SHA'
+  - 'gcr.io/sneha-creations/firstapi:$COMMIT_SHA'
   - '--region'
   - 'us-west1'
   - '--platform'
   - 'managed'
 images:
-- gcr.io/sneha-creations/restapi
+- gcr.io/sneha-creations/firstapi
 timeout: 1200s
